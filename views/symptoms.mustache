@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<title>{{title}}</title>
+{{>head}}
+
+<body>
+
+    <div class="row">
+        <div class="col s12">
+            {{>header}}
+        </div>
+
+        <div class="col s12 m4 l3">
+            {{>menu}}
+        </div>
+        <div class="col s9">
+            <h4>Symptoms, Consequences, and Treatment</h4>
+            <hr/>
+
+            <figure class="cd-image-container">
+                <img src="images/body_clean.png" alt="Original Image">
+                <span class="cd-image-label" data-type="original">Clean</span>
+
+                <div class="cd-resize-img">
+                    <img src="images/body_infected.png" alt="Modified Image">
+                    <span class="cd-image-label" data-type="modified">Infected</span>
+                </div>
+
+                <span class="cd-handle"></span>
+            </figure>
+            <hr/>
+            <h5>Short</h5>
+            <p>The signs and symptoms of illness include fever, skin rash, joint pain, conjunctivitis, shortness of breath,
+                chills or cellulitis.
+                <br/>
+                <br/>About a third of the people infected with Logi in the current outbreak have died.
+                <br/>
+                <br/>The strain responsible for most of the cases in the current outbreak can be treated with several antibiotics.
+            </p>
+            <hr/>
+            <h5>Long</h5>
+            <p>
+                The signs and symptoms of illness include fever, skin rash, joint pain, conjunctivitis, shortness of breath, chills or cellulitis.
+                Most of the people in the outbreak have had bloodstream infections with Logi. But in a few cases, the bacteria
+                was found in the respiratory tract or the joints.
+                <br/>
+                <br/> About a third of the people infected with Logi in the current outbreak have died. However, it has not yet
+                been determined whether the bacteria was the actual cause of death in these cases.
+                <br/>
+                <br/> Logi are Gram-negative bacteria that tend to be naturally resistant to many of the antibiotics that physicians
+                may typically use to treat infections. However, the strain responsible for most of the cases in the current
+                outbreak can be treated with several other antibiotics. So early recognition of the bacteria is critical
+                to ensure patients receive appropriate diagnosis and treatment. The infection typically presents as septicemia
+                and can be fatal if treatment with appropriate antibiotics is delayed.
+
+            </p>
+        </div>
+    </div>
+
+    {{>script}}
+
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+.collection {
+  margin: 1rem 0 0 0;
+}
+
+.collection a.collection-item {
+  color: #0d47a1;
+}
+
+.collection .collection-item.active {
+  background-color: #0d47a1;
+}
