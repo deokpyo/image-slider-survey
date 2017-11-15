@@ -48,7 +48,7 @@ header h1 {
 .cd-image-container {
   position: relative;
   width: 90%;
-  max-width: 450px;
+  max-width: 600px;
   margin: 0em auto;
 }
 .cd-image-container img {
@@ -87,6 +87,7 @@ header h1 {
 
 .cd-resize-img {
   position: absolute;
+  background-color: #fff;
   top: 0;
   left: 0;
   width: 0;
