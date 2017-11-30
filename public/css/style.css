@@ -10,15 +10,28 @@
 .collection .collection-item.active {
   background-color: #0d47a1;
 }
+/* ---------------------------------------------- /*
+ * Preloader
+/* ---------------------------------------------- */
 
-#content-logi {
-  display: block;
+#preloader {
+	background: #fff;
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 9999;
 }
 
-#content-symptom {
-  display: none;
-}
-
-#content-outbreak {
-  display: none;
+#status {
+	background-image: url('../images/preloader.gif');
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 200px;
+	left: 50%;
+	margin: -100px 0 0 -100px;
+	position: absolute;
+	top: 50%;
+	width: 200px;
 }
