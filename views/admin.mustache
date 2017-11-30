@@ -1,15 +1,116 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en-US">
-{{>head}}
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="/css/materialize.min.css" type="text/css" />
 
-<body>
-	<div id="root"></div>
+<body class="container">
+
+	<div class="row">
+		<h1><i class="medium material-icons">settings</i> Admin Page</h1>
+		<br/>
+		<div class="input-field col s6">
+			<select id="page-option">
+				<option value="" disabled selected>Select your option</option>
+				<option value="1">1. No Slider, Short Text</option>
+				<option value="2">2. No Slider, Long Text</option>
+				<option value="3">3. Slider, Short Text</option>
+				<option value="4">4. Slider, Long Text</option>
+			</select>
+			<label>Survey Page Options</label>
+		</div>
+		<div class="input-field col s6">
+			<button class="btn waves-effect waves-light blue" onclick="createSelection()">Create Page
+				<i class="material-icons left">add</i>
+			</button>
+		</div>
+	</div>
+
+	<br/>
+
+	<div class="row">
+		<h4>Pages</h4>
+		<table class="highlight responsive-table">
+			<thead>
+				<tr>
+					<th>Slider</th>
+					<th>Text</th>
+					<th>Date Created</th>
+					<th>Link ID</th>
+					<th>Content</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+
+			<tbody id="table-page-list">
+			</tbody>
+		</table>
+	</div>
+
+	<br/>
+
+	<div class="row">
+		<h4>Results</h4>
+		<a class="waves-effect waves-light btn">
+			<i class="material-icons left">file_download</i>Excel File</a>
+		<table class="highlight responsive-table">
+			<thead>
+				<tr>
+					<th>Option</th>
+					<th>Link ID</th>
+					<th>IP Address</th>
+					<th>Logi</th>
+					<th>Symptoms</th>
+					<th>Outbreaks</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td>1. No Slider, Short Text</td>
+					<td>abcde12345</td>
+					<td>0.0.0.80</td>
+					<td>2</td>
+					<td>5</td>
+					<td>7</td>
+				</tr>
+				<tr>
+					<td>2. No Slider, Long Text</td>
+					<td>abcde12345</td>
+					<td>0.0.0.80</td>
+					<td>2</td>
+					<td>5</td>
+					<td>7</td>
+				</tr>
+				<tr>
+					<td>3. Slider, Short Text</td>
+					<td>abcde12345</td>
+					<td>0.0.0.80</td>
+					<td>2</td>
+					<td>5</td>
+					<td>7</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<!-- Modal Structure -->
+	<div id="modal1" class="modal modal-fixed-footer">
+		<div class="modal-content">
+			<h5>Edit Content</h5>
+			<form id="page-content-form"></form>
+		</div>
+		<div class="modal-footer">
+			<a href="#!" class="modal-action modal-close waves-effect waves-green btn amber">Cancel</a>
+			<a href="#!" class="modal-action waves-effect waves-green btn teal">Update</a>
+		</div>
+	</div>
 
 
-	<!-- Turbo library imports: jQuery, Turbo CDN, sample app.js -->
-	<script type="text/javascript" src="/dist/js/vendor.min.js"></script>
-	<script type="text/javascript" src="https://cdn.turbo360-dev.com/dist/turbo.min.js"></script>
-	<script type="text/javascript" src="/dist/bundle/commons.js"></script>
-	<script type="text/javascript" src="/dist/bundle/app.js"></script> <!-- React code bundle -->
+	<script type="text/javascript" src="/js/jquery.js"></script>
+	<script type="text/javascript" src="/js/materialize.min.js"></script>
+	<script type="text/javascript" src="/js/moment.min.js"></script>
+	<script type="text/javascript" src="/js/admin.js"></script>
 </body>
+
 </html>

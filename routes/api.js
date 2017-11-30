@@ -1,27 +1,59 @@
-const pkg_json = require('../package.json')
-const turbo = require('turbo360')({site_id:pkg_json.app})
-const vertex = require('vertex360')({site_id:pkg_json.app})
-const router = vertex.router()
+const pkg_json = require("../package.json");
+const turbo = require("turbo360")({ site_id: pkg_json.app });
+const vertex = require("vertex360")({ site_id: pkg_json.app });
+const router = vertex.router();
 
-/*  This is a sample API route. */
+router.get("/page", function(req, res) {
+  turbo
+    .fetch("page", null)
+    .then(data => {
+      res.json({
+        confirmation: "success",
+        result: data
+      });
+    })
+    .catch(err => {
+      res.json({
+        confirmation: "fail",
+        message: err
+      });
+    });
+});
 
-router.get('/:resource', function(req, res){
-	res.json({
-		confirmation: 'success',
-		resource: req.params.resource,
-		query: req.query // from the url query string
-	})
-})
+router.post("/page", function(req, res) {
+  var params = JSON.parse(req.body.params);
 
-router.get('/:resource/:id', function(req, res){
-	res.json({
-		confirmation: 'success',
-		resource: req.params.resource,
-		id: req.params.id,
-		query: req.query // from the url query string
-	})
-})
+  turbo
+    .create("page", params)
+    .then(data => {
+      res.json({
+        confirmation: "success",
+        result: data
+      });
+    })
+    .catch(err => {
+      res.json({
+        confirmation: "fail",
+        message: err
+      });
+    });
+});
 
+router.delete("/page", function(req, res) {
+  turbo
+    .remove("page", req.body)
+    .then(data => {
+      res.json({
+        confirmation: "success",
+        result: data
+      });
+    })
+    .catch(err => {
+      res.json({
+        confirmation: "fail",
+        message: err
+      });
+    });
+});
 
-
-module.exports = router
+module.exports = router;

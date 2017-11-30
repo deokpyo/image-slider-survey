@@ -4,8 +4,21 @@
 
 .collection a.collection-item {
   color: #0d47a1;
+  cursor: pointer;
 }
 
 .collection .collection-item.active {
   background-color: #0d47a1;
+}
+
+#content-logi {
+  display: block;
+}
+
+#content-symptom {
+  display: none;
+}
+
+#content-outbreak {
+  display: none;
 }
