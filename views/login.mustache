@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="/css/materialize.min.css" type="text/css" />
+<link rel="stylesheet" href="/css/style.css" type="text/css" />
+<link rel="stylesheet" href="/css/login.css" type="text/css" />
+
+<body class="container">
+    <!-- Preloader -->
+    <div id="preloader">
+        <div id="status"></div>
+    </div>
+
+    <div class="grandParentContaniner">
+        <div class="parentContainer">
+            <div class="card hoverable" id="loginForm">
+                <div class="card-content">
+                    <form action="../admin/login" method="post">
+                        <span class="card-title">Admin Login</span>
+                        <div class="input-field">
+                            <input name="email" type="text" class="validate">
+                            <label for="email">Enter your email</label>
+                        </div>
+                        <div class="input-field">
+                            <input name="password" type="password" class="validate">
+                            <label for="password">Enter your password</label>
+                        </div>
+                        <br/>
+                        <center>
+                            <button type="submit" class='col s12 btn btn-large waves-effect indigo'>Login</button>
+                        </center>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/materialize.min.js"></script>
+    <script type="text/javascript" src="/js/preloader.js"></script>
+    <script type="text/javascript" src="/js/login.js"></script>
+</body>
+
+</html>

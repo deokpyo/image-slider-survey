@@ -1,0 +1,22 @@
+/* ---------------------------------------------- /*
+ * Login form valign
+/* ---------------------------------------------- */
+html,
+body {
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+.grandParentContaniner {
+  display: table;
+  height: 100%;
+  margin: 0 auto;
+}
+.parentContainer {
+  display: table-cell;
+  vertical-align: middle;
+}
+.parentContainer #loginForm {
+  padding: 10px;
+  width: 350px; /*  your login form width */
+}

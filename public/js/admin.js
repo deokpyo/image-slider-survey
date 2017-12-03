@@ -111,7 +111,15 @@ var renderPages = function() {
     listItems += "<td>" + page.text + "</td>";
     listItems += "<td>" + time + "</td>";
     listItems +=
-      '<td><a href="/survey/' + page.id + '" target="_blank">' + page.id + "</a></td>";
+      '<td><a href="/participant/' +
+      page.id +
+      '" target="_blank">' +
+      page.id +
+      "</a></td>";
+    listItems +=
+      '<td><a href="/survey/' +
+      page.id +
+      '" class="btn-floating modal-trigger cyan" target="_blank"><i class="material-icons">open_in_new</i></a></td>';
     listItems +=
       '<td><a id="' +
       page.id +
@@ -147,23 +155,35 @@ var deletePage = function(id) {
 var editPage = function(id) {
   console.log("editPage: ", pagesHash[id]);
 
-  modalItems = '';
+  modalItems = "";
   modalItems += '<div class="row">';
   modalItems += '<div class="input-field col s12">';
-  modalItems += '<textarea id="text-logi" class="materialize-textarea">'+pagesHash[id].content.logi+'</textarea>';
-  modalItems += '<label class="active" for="text-logi">About Logi</label></div>';
+  modalItems +=
+    '<textarea id="text-logi" class="materialize-textarea">' +
+    pagesHash[id].content.logi +
+    "</textarea>";
+  modalItems +=
+    '<label class="active" for="text-logi">About Logi</label></div>';
   modalItems += '<div class="input-field col s12">';
-  modalItems += '<textarea id="text-symptom" class="materialize-textarea">'+pagesHash[id].content.symptom+'</textarea>';
-  modalItems += '<label class="active" for="text-symptom">Symptoms, Consequences, & Treatment</label></div>';
+  modalItems +=
+    '<textarea id="text-symptom" class="materialize-textarea">' +
+    pagesHash[id].content.symptom +
+    "</textarea>";
+  modalItems +=
+    '<label class="active" for="text-symptom">Symptoms, Consequences, & Treatment</label></div>';
   modalItems += '<div class="input-field col s12">';
-  modalItems += '<textarea id="text-outbreak" class="materialize-textarea">'+pagesHash[id].content.outbreak+'</textarea>';
-  modalItems += '<label class="active" for="text-outbreak">Recent Outbreaks</label>';
-  modalItems += '</div></div>';
+  modalItems +=
+    '<textarea id="text-outbreak" class="materialize-textarea">' +
+    pagesHash[id].content.outbreak +
+    "</textarea>";
+  modalItems +=
+    '<label class="active" for="text-outbreak">Recent Outbreaks</label>';
+  modalItems += "</div></div>";
 
   $("#page-content-form").html(modalItems);
-  $('#text-logi').trigger('autoresize');
-  $('#text-symptom').trigger('autoresize');
-  $('#text-outbreak').trigger('autoresize');
+  $("#text-logi").trigger("autoresize");
+  $("#text-symptom").trigger("autoresize");
+  $("#text-outbreak").trigger("autoresize");
 };
 
 getPages();
