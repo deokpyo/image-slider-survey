@@ -3,7 +3,7 @@
 <title>{{title}}</title>
 {{>head}}
 
-<body data-id="{{id}}">
+<body id="root" data-id="{{id}}" data-participant="{{participantID}}" data-slider="{{slider}}" data-text="{{text}}">
 	<!-- Preloader -->
 	<div id="preloader">
 		<div id="status"></div>
@@ -19,61 +19,56 @@
 		</div>
 		<div class="col s9">
 			<div id="content-logi">
-				<h4>About Logi</h4>
-				<div class="col s7">
-				<p>Switch your view by clicking the arrow button below</p>
-					<figure class="cd-image-container">
-						<img src="../images/water_clean.png" alt="Original Image">
-						<span class="cd-image-label" data-type="original">Clean</span>
-
-						<div class="cd-resize-img">
-							<img src="../images/water_infected.png" alt="Modified Image">
-							<span class="cd-image-label" data-type="modified">Infected</span>
+				<div class="col s6">
+					<br/>
+					<div class="ba-slider">
+						<img src="../images/water_clean.png" alt="clean">
+						<div class="resize">
+							<img src="../images/water_infected.png" alt="infected">
 						</div>
-						<span class="cd-handle"></span>
-					</figure>
+						<span class="handle" onclick="clickLogiSlider()"></span>
+					</div>
+					<span>Switch your view by clicking the arrow button above</span>
 				</div>
-				<div class="col s5">
+				<div class="col s6">
+					<h4>About Logi</h4>
 					{{{content.logi}}}
 				</div>
 			</div>
 
 			<div id="content-symptom">
-				<h4>Symptoms, Consequences, and Treatment</h4>
-				<div class="col s7">
-				<p>Switch your view by clicking the arrow button below</p>
-					<figure class="cd-image-container">
-						<img src="../images/body_clean.png" alt="Original Image">
-						<span class="cd-image-label" data-type="original">Clean</span>
-
-						<div class="cd-resize-img">
-							<img src="../images/body_infected.png" alt="Modified Image">
-							<span class="cd-image-label" data-type="modified">Infected</span>
-						</div>
-						<span class="cd-handle"></span>
-					</figure>
-				</div>
 				<div class="col s5">
+
+					<div class="ba-slider">
+						<img src="../images/body_clean.png" alt="clean" >
+						<div class="resize">
+							<img src="../images/body_infected.png" alt="infected">
+						</div>
+						<span class="handle" onclick="clickSymptomsSlider()"></span>
+					</div>
+					<span>Switch your view by clicking the arrow button above</span>
+
+				</div>
+				<div class="col s7">
+					<h4>Symptoms, Consequences, and Treatment</h4>
 					{{{content.symptom}}}
 				</div>
 			</div>
 
 			<div id="content-outbreak">
-				<h4>Recent Outbreaks</h4>
-				<div class="col s7">
-				<p>Switch your view by clicking the arrow button below</p>
-					<figure class="cd-image-container">
-						<img src="../images/map_nov.png" alt="Original Image">
-						<span class="cd-image-label" data-type="original"></span>
-
-						<div class="cd-resize-img" style="width: 100%">
-							<img src="../images/map_oct.png" alt="Modified Image">
-							<span class="cd-image-label" data-type="modified"></span>
+				<div class="col s6">
+					<br/>
+					<div class="ba-slider">
+						<img src="../images/map_nov.png" alt="nov">
+						<div class="resize map-oct">
+							<img src="../images/map_oct.png" alt="oct">
 						</div>
-						<span class="cd-handle map"></span>
-					</figure>
+						<span class="handle map" onclick="clickOutbreaksSlider()"></span>
+					</div>
+					<span>Switch your view by clicking the arrow button above</span>
 				</div>
-				<div class="col s5">
+				<div class="col s6">
+					<h4>Recent Outbreaks</h4>
 					{{{content.outbreak}}}
 				</div>
 			</div>

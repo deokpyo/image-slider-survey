@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="/css/style.css" type="text/css" />
 <link rel="stylesheet" href="/css/login.css" type="text/css" />
 
-<body class="container">
+<body id="root" class="container" data-id="{{id}}">
     <!-- Preloader -->
     <div id="preloader">
         <div id="status"></div>
@@ -16,17 +16,15 @@
         <div class="parentContainer">
             <div class="card hoverable" id="loginForm">
                 <div class="card-content">
-                    <form action="../admin/login" method="post">
-                        <span class="card-title">Participant Login</span>
-                        <div class="input-field">
-                            <input name="participantID" type="text" class="validate">
-                            <label for="participantID">Enter your ID provided from Qualtrics</label>
-                        </div>
-                        <br/>
-                        <center>
-                            <button type="submit" class='col s12 btn btn-large waves-effect indigo'>Start Survey</button>
-                        </center>
-                    </form>
+                    <span class="card-title">Participant Login</span>
+                    <div class="input-field">
+                        <input id="participantID" type="text" class="validate">
+                        <label for="participantID">Enter your ID provided from Qualtrics</label>
+                    </div>
+                    <br/>
+                    <center>
+                        <button onclick="onSurveyStart()" class='col s12 btn btn-large waves-effect indigo'>Start Survey</button>
+                    </center>
                 </div>
             </div>
         </div>

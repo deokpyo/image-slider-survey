@@ -4,6 +4,9 @@ $(document).ready(function() {
 });
 
 var pages = null;
+var results = null;
+var currentPage = null;
+var csvData = [];
 var pagesHash = {};
 var short = {
   logi:
@@ -93,6 +96,18 @@ var getPages = function() {
   });
 };
 
+var getResults = function() {
+  $.get("api/result", function(res) {
+    if (res.confirmation === "success") {
+      results = res.result;
+      renderResults();
+    } else {
+      console.log("Error: " + res.message);
+      return;
+    }
+  });
+};
+
 var renderPages = function() {
   if (pages === null) {
     return;
@@ -103,9 +118,9 @@ var renderPages = function() {
     let time = moment(page.timestamp).format("YYYY-MM-DD h:mm:ss a");
     var slider = "";
     if (page.slider) {
-      slider = "Yes";
+      slider = "yes";
     } else {
-      slider = "No";
+      slider = "no";
     }
     listItems += "<tr><td>" + slider + "</td>";
     listItems += "<td>" + page.text + "</td>";
@@ -119,7 +134,7 @@ var renderPages = function() {
     listItems +=
       '<td><a href="/survey/' +
       page.id +
-      '" class="btn-floating modal-trigger cyan" target="_blank"><i class="material-icons">open_in_new</i></a></td>';
+      '?admintest" class="btn-floating cyan" target="_blank"><i class="material-icons">open_in_new</i></a></td>';
     listItems +=
       '<td><a id="' +
       page.id +
@@ -130,6 +145,54 @@ var renderPages = function() {
       '" class="btn-floating red" onclick="deletePage(id)"><i class="material-icons">delete</i></a></td></tr>';
   });
   $("#table-page-list").html(listItems);
+};
+
+var renderResults = function() {
+  if (results === null) {
+    return;
+  }
+  var listItems = "";
+  results.forEach(function(result, i) {
+    let timeStart = moment(result.startTime).format("HH:mm:ss");
+    let timeEnd = moment(result.timestamp).format("HH:mm:ss");
+
+    var slider = "";
+    if (result.slider === "true") {
+      slider = "yes";
+    } else {
+      slider = "no";
+    }
+
+    listItems += "<tr><td>" + slider + "</td>";
+    listItems += "<td>" + result.text + "</td>";
+    listItems += "<td>" + result.linkID + "</td>";
+    listItems += "<td>" + result.participantID + "</td>";
+    listItems += "<td>" + result.logi + "</td>";
+    listItems += "<td>" + result.logiSlider + "</td>";
+    listItems += "<td>" + result.symptoms + "</td>";
+    listItems += "<td>" + result.symptomsSlider + "</td>";
+    listItems += "<td>" + result.outbreaks + "</td>";
+    listItems += "<td>" + result.outbreaksSlider + "</td>";
+    listItems += "<td>" + timeStart + "</td>";
+    listItems += "<td>" + timeEnd + "</td></tr>";
+
+    var dataSet = [];
+    dataSet.push(slider);
+    dataSet.push(result.text);
+    dataSet.push(result.linkID);
+    dataSet.push(result.participantID);
+    dataSet.push(result.logi);
+    dataSet.push(result.logiSlider);
+    dataSet.push(result.symptoms);
+    dataSet.push(result.symptomsSlider);
+    dataSet.push(result.outbreaks);
+    dataSet.push(result.outbreaksSlider);
+    dataSet.push(timeStart);
+    dataSet.push(timeEnd);
+    csvData.push(dataSet);
+  });
+
+  $("#table-result-list").html(listItems);
 };
 
 var deletePage = function(id) {
@@ -153,8 +216,7 @@ var deletePage = function(id) {
 };
 
 var editPage = function(id) {
-  console.log("editPage: ", pagesHash[id]);
-
+  currentPage = id;
   modalItems = "";
   modalItems += '<div class="row">';
   modalItems += '<div class="input-field col s12">';
@@ -186,4 +248,62 @@ var editPage = function(id) {
   $("#text-outbreak").trigger("autoresize");
 };
 
+var updatePage = function() {
+  var textLogi = $("#text-logi").val();
+  var textSymptom = $("#text-symptom").val();
+  var textOutbreak = $("#text-outbreak").val();
+
+  const params = {
+    id: currentPage,
+    data: {
+      content: {
+        logi: textLogi,
+        symptom: textSymptom,
+        outbreak: textOutbreak
+      }
+    }
+  };
+
+  var paramsJSON = JSON.stringify(params);
+
+  $.ajax({
+    url: "../api/page",
+    type: "PUT",
+    data: {
+      params: paramsJSON
+    },
+    success: function(res) {
+      if (res.confirmation === "success") {
+        alert("page content has been updated");
+        getPages();
+        $("#modal1").modal("close");
+      } else {
+        console.log("Error: ", res.message);
+        return;
+      }
+    }
+  });
+};
+
+var download_csv = function() {
+  if (csvData.length === 0) {
+    return;
+  }
+
+  var csv = "";
+  csv +=
+    "Slider,Text,LinkID,ParticipantID,LogiBtn,LogiSlider,SymptomsBtn,SymptomsSlider,OutbreaksBtn,OutbreaksSlider,StartTime,EndTime\n";
+  csvData.forEach(function(row) {
+    csv += row.join(",");
+    csv += "\n";
+  });
+
+  var hiddenElement = document.createElement("a");
+  hiddenElement.href = "data:text/csv;charset=utf-8," + encodeURI(csv);
+  hiddenElement.target = "_blank";
+  hiddenElement.download = "results.csv";
+  hiddenElement.click();
+};
+
 getPages();
+getResults();

@@ -4,17 +4,17 @@ const vertex = require("vertex360")({ site_id: pkg_json.app });
 const router = vertex.router();
 
 router.get("/", function(req, res) {
-    // admin not logged in:
-    if (req.vertexSession !== null) {
-      res.redirect("/admin");
-      return;
-    }
-  
-    // admin not logged in:
-    if (req.vertexSession.user !== null) {
-      res.redirect("/admin");
-      return;
-    }
+  // admin not logged in:
+  if (req.vertexSession !== null) {
+    res.redirect("/admin");
+    return;
+  }
+
+  // admin not logged in:
+  if (req.vertexSession.user !== null) {
+    res.redirect("/admin");
+    return;
+  }
   res.redirect("/login");
 });
 
@@ -42,14 +42,15 @@ router.get("/admin", function(req, res) {
 });
 
 router.get("/survey/:id", function(req, res) {
-
   turbo
     .fetchOne("page", req.params.id)
     .then(data => {
       const template = {
         title: "Office of Infectious Diseases",
         id: req.params.id,
-        content: data.content
+        content: data.content,
+        slider: data.slider,
+        text: data.text
       };
       if (data.slider) {
         res.render("slider", template);

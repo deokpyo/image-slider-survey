@@ -39,9 +39,64 @@ router.post("/page", function(req, res) {
     });
 });
 
+router.put("/page", function(req, res) {
+  var params = JSON.parse(req.body.params);
+
+  turbo
+    .update("page", { id: params.id }, params.data)
+    .then(data => {
+      res.json({
+        confirmation: "success",
+        result: data
+      });
+    })
+    .catch(err => {
+      res.json({
+        confirmation: "fail",
+        message: err
+      });
+    });
+});
+
 router.delete("/page", function(req, res) {
   turbo
     .remove("page", req.body)
+    .then(data => {
+      res.json({
+        confirmation: "success",
+        result: data
+      });
+    })
+    .catch(err => {
+      res.json({
+        confirmation: "fail",
+        message: err
+      });
+    });
+});
+
+router.get("/result", function(req, res) {
+  turbo
+    .fetch("result", null)
+    .then(data => {
+      res.json({
+        confirmation: "success",
+        result: data
+      });
+    })
+    .catch(err => {
+      res.json({
+        confirmation: "fail",
+        message: err
+      });
+    });
+});
+
+router.post("/result", function(req, res) {
+  var params = JSON.parse(req.body.params);
+
+  turbo
+    .create("result", params)
     .then(data => {
       res.json({
         confirmation: "success",

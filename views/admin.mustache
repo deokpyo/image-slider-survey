@@ -18,7 +18,7 @@
 					<i class="medium material-icons">settings</i> Admin Page</h1>
 			</div>
 			<div class="col s2">
-				<a class="btn waves-effect waves-light grey" href="../admin/logout">Log Out
+				<a class="btn waves-effect waves-light grey" href="../admin/logout">Logout
 				</a>
 			</div>
 		</div>
@@ -34,7 +34,7 @@
 			<label>Survey Page Options</label>
 		</div>
 		<div class="input-field col s6">
-			<button class="btn waves-effect waves-light blue" onclick="createSelection()">Create Page
+			<button class="btn waves-effect waves-light blue" onclick="createSelection()">Create
 				<i class="material-icons left">add</i>
 			</button>
 		</div>
@@ -43,7 +43,7 @@
 	<br/>
 
 	<div class="row">
-		<h4>Pages</h4>
+		<h5>Pages</h5>
 		<table class="highlight responsive-table">
 			<thead>
 				<tr>
@@ -65,15 +65,16 @@
 	<br/>
 
 	<div class="row">
-		<h4>Results</h4>
-		<a class="waves-effect waves-light btn">
-			<i class="material-icons left">file_download</i>Excel File</a>
+		<h5>Results</h5>
+		<a class="waves-effect waves-light btn" onclick="download_csv()">
+			<i class="material-icons left">file_download</i>File</a>
 		<table class="highlight responsive-table">
 			<thead>
 				<tr>
-					<th>Option</th>
+					<th>Slider</th>
+					<th>Text</th>
 					<th>Link ID</th>
-					<th>IP Address</th>
+					<th>Participant ID</th>
 					<th>Logi</th>
 					<th>Slider</th>
 					<th>Symptoms</th>
@@ -85,46 +86,7 @@
 				</tr>
 			</thead>
 
-			<tbody>
-				<tr>
-					<td>1. No Slider, Short Text</td>
-					<td>abcde12345</td>
-					<td>0.0.0.80</td>
-					<td>2</td>
-					<td>5</td>
-					<td>7</td>
-					<td>2</td>
-					<td>5</td>
-					<td>7</td>
-					<td>11:11:16 pm</td>
-					<td>11:25:16 pm</td>
-				</tr>
-				<tr>
-					<td>2. No Slider, Long Text</td>
-					<td>abcde12345</td>
-					<td>0.0.0.80</td>
-					<td>2</td>
-					<td>5</td>
-					<td>7</td>
-					<td>2</td>
-					<td>5</td>
-					<td>7</td>
-					<td>11:11:16 pm</td>
-					<td>11:25:16 pm</td>
-				</tr>
-				<tr>
-					<td>3. Slider, Short Text</td>
-					<td>abcde12345</td>
-					<td>0.0.0.80</td>
-					<td>2</td>
-					<td>5</td>
-					<td>7</td>
-					<td>2</td>
-					<td>5</td>
-					<td>7</td>
-					<td>11:11:16 pm</td>
-					<td>11:25:16 pm</td>
-				</tr>
+			<tbody id="table-result-list">
 			</tbody>
 		</table>
 	</div>
@@ -136,8 +98,8 @@
 			<form id="page-content-form"></form>
 		</div>
 		<div class="modal-footer">
-			<a href="#!" class="modal-action modal-close waves-effect waves-green btn amber">Cancel</a>
-			<a href="#!" class="modal-action waves-effect waves-green btn teal">Update</a>
+			<a class="modal-action modal-close waves-effect waves-green btn amber">Cancel</a>
+			<a onclick="updatePage()" class="modal-action waves-effect waves-green btn teal">Update</a>
 		</div>
 	</div>
 
