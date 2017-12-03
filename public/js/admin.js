@@ -155,6 +155,7 @@ var renderResults = function() {
   results.forEach(function(result, i) {
     let timeStart = moment(result.startTime).format("HH:mm:ss");
     let timeEnd = moment(result.timestamp).format("HH:mm:ss");
+    let date = moment(result.timestamp).format("YYYY-MM-DD");
 
     var slider = "";
     if (result.slider === "true") {
@@ -165,7 +166,6 @@ var renderResults = function() {
 
     listItems += "<tr><td>" + slider + "</td>";
     listItems += "<td>" + result.text + "</td>";
-    listItems += "<td>" + result.linkID + "</td>";
     listItems += "<td>" + result.participantID + "</td>";
     listItems += "<td>" + result.logi + "</td>";
     listItems += "<td>" + result.logiSlider + "</td>";
@@ -173,6 +173,7 @@ var renderResults = function() {
     listItems += "<td>" + result.symptomsSlider + "</td>";
     listItems += "<td>" + result.outbreaks + "</td>";
     listItems += "<td>" + result.outbreaksSlider + "</td>";
+    listItems += "<td>" + date + "</td>";
     listItems += "<td>" + timeStart + "</td>";
     listItems += "<td>" + timeEnd + "</td>";
     listItems +=
