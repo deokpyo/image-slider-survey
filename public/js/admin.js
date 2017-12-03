@@ -174,7 +174,11 @@ var renderResults = function() {
     listItems += "<td>" + result.outbreaks + "</td>";
     listItems += "<td>" + result.outbreaksSlider + "</td>";
     listItems += "<td>" + timeStart + "</td>";
-    listItems += "<td>" + timeEnd + "</td></tr>";
+    listItems += "<td>" + timeEnd + "</td>";
+    listItems +=
+      '<td><a id="' +
+      result.id +
+      '" class="btn-floating red" onclick="deleteResult(id)"><i class="material-icons">delete</i></a></td></tr>';
 
     var dataSet = [];
     dataSet.push(slider);
@@ -214,6 +218,26 @@ var deletePage = function(id) {
     return;
   }
 };
+
+var deleteResult = function(id) {
+  if (confirm("Are you sure?") === true) {
+    $.ajax({
+      url: "api/result",
+      type: "DELETE",
+      data: { id: id },
+      success: function(res) {
+        if (res.confirmation === "success") {
+          getResults();
+        } else {
+          console.log("Error: ", res.message);
+          return;
+        }
+      }
+    });
+  } else {
+    return;
+  }
+}
 
 var editPage = function(id) {
   currentPage = id;

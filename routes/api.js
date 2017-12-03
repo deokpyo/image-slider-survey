@@ -111,4 +111,21 @@ router.post("/result", function(req, res) {
     });
 });
 
+router.delete("/result", function(req, res) {
+  turbo
+    .remove("result", req.body)
+    .then(data => {
+      res.json({
+        confirmation: "success",
+        result: data
+      });
+    })
+    .catch(err => {
+      res.json({
+        confirmation: "fail",
+        message: err
+      });
+    });
+});
+
 module.exports = router;
