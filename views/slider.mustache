@@ -14,12 +14,18 @@
 			{{>header}}
 		</div>
 
+	</div>
+
+	<br/>
+	<div class="row">
+
 		<div class="col s12 m4 l3">
 			{{>menu}}
 		</div>
 		<div class="col s9">
 			<div id="content-logi">
 				<div class="col s6">
+					{{>text}}
 					<br/>
 					<div class="ba-slider">
 						<img src="../images/water_clean.png" alt="clean">
@@ -28,35 +34,35 @@
 						</div>
 						<span class="handle" onclick="clickLogiSlider()"></span>
 					</div>
-					<span>Switch your view by clicking the arrow button above</span>
 				</div>
 				<div class="col s6">
-					<h4>About Logi</h4>
+					<h5>About Logi</h5>
 					{{{content.logi}}}
 				</div>
 			</div>
 
 			<div id="content-symptom">
-				<div class="col s5">
-
+				<div class="col s5 offset-s1">
+					{{>text}}
 					<div class="ba-slider">
-						<img src="../images/body_clean.png" alt="clean" >
+						<img src="../images/body_clean.png" alt="clean">
 						<div class="resize">
 							<img src="../images/body_infected.png" alt="infected">
 						</div>
 						<span class="handle" onclick="clickSymptomsSlider()"></span>
 					</div>
-					<span>Switch your view by clicking the arrow button above</span>
+
 
 				</div>
-				<div class="col s7">
-					<h4>Symptoms, Consequences, and Treatment</h4>
+				<div class="col s6">
+					<h5>Symptoms, Consequences, and Treatment</h5>
 					{{{content.symptom}}}
 				</div>
 			</div>
 
 			<div id="content-outbreak">
-				<div class="col s6">
+				<div class="col s6 offset-s3">
+					{{>text}}
 					<br/>
 					<div class="ba-slider">
 						<img src="../images/map_nov.png" alt="nov">
@@ -65,18 +71,16 @@
 						</div>
 						<span class="handle map" onclick="clickOutbreaksSlider()"></span>
 					</div>
-					<span>Switch your view by clicking the arrow button above</span>
 				</div>
-				<div class="col s6">
-					<h4>Recent Outbreaks</h4>
+				<div class="col s12">
+					<h5>Recent Outbreaks</h5>
 					{{{content.outbreak}}}
 				</div>
 			</div>
 
 		</div>
 	</div>
-
-	{{>script}}
+	{{>page}} {{>script}}
 
 </body>
 

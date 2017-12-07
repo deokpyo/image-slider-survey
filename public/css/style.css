@@ -35,3 +35,16 @@
 	top: 50%;
 	width: 200px;
 }
+
+#sticky-footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+}
+
+.image-text {
+	margin-top: 11px;
+	font-size: 13px;
+	color:#1a237e;
+}

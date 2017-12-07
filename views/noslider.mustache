@@ -13,6 +13,10 @@
         <div class="col s12">
             {{>header}}
         </div>
+    </div>
+
+    <br/>
+    <div class="row">
 
         <div class="col s12 m4 l3">
             {{>menu}}
@@ -20,24 +24,23 @@
         <div class="col s9">
             <div id="content-logi">
 
-                <div class="col s7">
-                    <br/>
-                    <div class="ba-slider">
+                <div class="col s6">
+                    <div class="ba-slider" style="margin-top:16px">
                         <img src="../images/water_clean.png" alt="clean">
                         <div class="resize">
                             <img src="../images/water_infected.png" alt="infected">
                         </div>
                     </div>
                 </div>
-                <div class="col s5">
-                    <h4>About Logi</h4>
+                <div class="col s6">
+                    <h5>About Logi</h5>
                     {{{content.logi}}}
                 </div>
             </div>
 
             <div id="content-symptom">
 
-                <div class="col s5">
+                <div class="col s5 offset-s1">
                     <div class="ba-slider">
                         <img src="../images/body_clean.png" alt="clean">
                         <div class="resize">
@@ -45,14 +48,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col s7">
-                    <h4>Symptoms, Consequences, and Treatment</h4>
+                <div class="col s6">
+                    <h5>Symptoms, Consequences, and Treatment</h5>
                     {{{content.symptom}}}
                 </div>
             </div>
 
             <div id="content-outbreak">
-                <h4>Recent Outbreaks</h4>
                 <div class="col s6">
                     <img class="responsive-img" src="../images/map_oct.png" alt="Modified Image">
                 </div>
@@ -60,13 +62,13 @@
                     <img class="responsive-img" src="../images/map_nov.png" alt="Original Image">
                 </div>
                 <div class="col s12">
+                    <h5>Recent Outbreaks</h5>
                     {{{content.outbreak}}}
                 </div>
             </div>
         </div>
     </div>
-
-    {{>script}}
+    {{>page}} {{>script}}
 
 </body>
 
